@@ -21,16 +21,14 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
+    private Integer UserId;
 
-    private String nickName;
+    private String UserName;
 
-    private String avatarUrl;
+    private String UserPwd;
 
-    public User(String nickName,String avatarUrl)
-    {
-        this.nickName = nickName;
-        this.avatarUrl = avatarUrl;
-    }
+    private String SX;
+
+
 
 }

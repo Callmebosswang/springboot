@@ -5,10 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author jinguoguo
@@ -31,4 +28,19 @@ public class User {
 
 
 
+    /*
+     * OneToOne
+     * JoinColumn用来指定生成的外键名字
+     */
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="userId")
+    public UserInfo getWife() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
+
+    private UserInfo userInfo;
 }

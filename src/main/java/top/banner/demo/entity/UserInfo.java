@@ -8,12 +8,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 /**
- * @author jinguoguo
+ * @author xgl
  */
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "tb_user_info")
 public class UserInfo {
 
     @Id
@@ -29,32 +31,12 @@ public class UserInfo {
     private Integer age;
 
     private String avatarUrl;
+
     private String tel;
+
     private Integer hight;
+
     private String emailAddress;
 
-
-    private String userID;
-
-    public UserInfo(String nickName, String avatarUrl) {
-        this.nickName = nickName;
-        this.avatarUrl = avatarUrl;
-    }
-
-    /*
-     * OneToOne
-     * JoinColumn用来指定生成的外键名字
-     */
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="userId")
-    public User getWife() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    private User user;
 
 }

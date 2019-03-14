@@ -1,21 +1,3 @@
-#spring:
-#  jpa:
-#    show-sql: true
-#    hibernate:
-#      ddl-auto: update
-#      naming:
-#        #        strategy: org.hibernate.cfg.ImprovedNamingStrategy
-#        implicit-strategy: top.xuguoliang.common.config.CustomNamingStrategy
-#    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
-#
-#  datasource:
-#    url: jdbc:mysql://111.230.42.14:3306/sureme?characterEncoding=UTF-8&useSSL=false
-#    username: root
-#    password: root
-#    tomcat:
-#      test-while-idle: true
-#      max-active: 3
-#      initial-size: 1
 spring:
   jpa:
     show-sql: true
@@ -25,9 +7,9 @@ spring:
 
 
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/demo?characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3307/demo?characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT
     username: root
-    password: 12345678
+    password: root
 
     driver-class-name: com.mysql.jdbc.Driver
     tomcat:

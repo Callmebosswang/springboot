@@ -5,8 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author: XGL
@@ -18,5 +17,9 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Table(name = "tb_student")
 public class Student extends UserInfo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private String classzz;
 }

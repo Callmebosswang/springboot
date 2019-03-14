@@ -1,13 +1,10 @@
 package top.banner.demo.entity.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import top.banner.demo.entity.User;
-
-import java.util.List;
+import top.banner.demo.entity.Teacher;
 
 
-public interface UserDao extends JpaRepository<User,Integer> {
-    User findByNickName(String string);
+public interface UserDao extends JpaRepository<Teacher,Integer> {
+    Teacher findByNickName(String string);
 
 }

@@ -4,7 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import top.banner.demo.entity.Teacher;
 
 
-public interface UserDao extends JpaRepository<Teacher,Integer> {
-    Teacher findByNickName(String string);
-
+public interface TeacherDao extends JpaRepository<Teacher, Integer> {
 }

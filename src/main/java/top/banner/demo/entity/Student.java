@@ -17,9 +17,5 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Table(name = "tb_student")
 public class Student extends UserInfo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    private String classzz;
+    private String clazz;
 }

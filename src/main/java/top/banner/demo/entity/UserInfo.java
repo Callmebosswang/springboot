@@ -70,5 +70,11 @@ public class UserInfo {
     @Column(length = 11)
     private String tel;
 
+    /**
+     * role 角色 0：学生 1：老师  2:管理员
+     */
+    @Column(length = 5)
+    private Integer role;
+
 
 }

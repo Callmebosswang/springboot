@@ -5,4 +5,5 @@ import top.banner.demo.entity.UserInfo;
 
 
 public interface UserInfoDao extends JpaRepository<UserInfo, Integer> {
+    UserInfo findByAccount(String account);
 }

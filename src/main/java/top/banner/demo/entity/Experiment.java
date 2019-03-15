@@ -19,8 +19,12 @@ public class Experiment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
     @OneToMany(mappedBy = "experiment", cascade = {CascadeType.ALL}, orphanRemoval = true, targetEntity = ExperimentSchedule.class)
     @MapKey(name = "student")
     private Map schedule = new HashMap<Student, ExperimentSchedule>();
+
+    @Column(length = 50)
+    private String classRoom;
 
 }

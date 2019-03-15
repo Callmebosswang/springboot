@@ -1,5 +1,6 @@
 package top.banner.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,7 +20,7 @@ public class Experiment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "experiment", cascade = {CascadeType.ALL}, orphanRemoval = true, targetEntity = ExperimentSchedule.class)
     @MapKey(name = "student")
     private Map<Student, ExperimentSchedule> schedule = new HashMap();

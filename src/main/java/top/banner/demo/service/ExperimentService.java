@@ -74,6 +74,8 @@ public class ExperimentService {
      */
     @Transactional
     public Experiment addExperiment(Integer id, Integer studentId) {
+        //todo 先检查是否已经加过实验
+
         Experiment experiment = experimentDao.findById(id).get();
         Student student = studentDao.getOne(studentId);
         ExperimentSchedule experimentSchedule = new ExperimentSchedule();

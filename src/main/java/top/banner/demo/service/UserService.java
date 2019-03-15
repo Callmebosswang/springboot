@@ -91,6 +91,9 @@ public class UserService {
      */
     @Transactional(readOnly = true)
     public UserInfo login(Map<String, Object> map) {
+        if (map.get("account").toString().trim().equals("admin")) {
+            throw new ValidationException("管理员请在后台登录");
+        }
         UserInfo userInfo = userInfoDao.findByAccount(map.get("account").toString().trim());
         Assert.notNull(userInfo, "用户不存在");
         if (!userInfo.getPassword().equals(map.get("password").toString().trim())) {

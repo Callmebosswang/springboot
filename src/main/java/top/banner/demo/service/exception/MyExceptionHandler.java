@@ -25,7 +25,7 @@ public class MyExceptionHandler {
         if (StringUtils.isEmpty(desc)) {
             desc = e.getCode();
         }
-        return new Result(e.getCode(), desc);
+        return new Result(HttpStatus.BAD_REQUEST.value()+"", desc);
     }
 
     //    IllegalArgumentException
@@ -42,6 +42,6 @@ public class MyExceptionHandler {
             code = message;
             message = desc;
         }
-        return new Result(code, message);
+        return new Result(HttpStatus.BAD_REQUEST.value()+"", message);
     }
 }

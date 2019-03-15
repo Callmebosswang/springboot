@@ -54,8 +54,13 @@ public class UserService {
      */
     @Transactional
     public UserInfo register(Map<String, Object> map) {
+        String account = map.get("account").toString().trim();
+        if (account.equals("admin")) throw new ValidationException("不能添加Admin账号");
+        UserInfo userInfo = userInfoDao.findByAccount(account);
+        if (userInfo != null) {
+            throw new ValidationException("账号重复");
+        }
         Integer type = Integer.valueOf(map.get("type").toString());
-        UserInfo userInfo;
         switch (type) {
             case 0:
                 userInfo = new Student(0);
@@ -64,11 +69,11 @@ public class UserService {
                 userInfo = new Teacher(1);
                 break;
             default:
-                throw new RuntimeException();
+                throw new ValidationException("类型错误");
         }
 
         userInfo.setName(map.get("name").toString().trim());
-        userInfo.setAccount(map.get("account").toString().trim());
+        userInfo.setAccount(account);
         userInfo.setPassword(map.get("password").toString().trim());
         userInfo.setAvatarUrl("http://www.gravatar.com/avatar/" + new Random().nextInt() + "?s=256&d=retro");
         userInfo.setAge(Integer.valueOf(map.get("age").toString()));
@@ -88,7 +93,7 @@ public class UserService {
         UserInfo userInfo = userInfoDao.findByAccount(map.get("account").toString().trim());
         Assert.notNull(userInfo, "用户不存在");
         if (!userInfo.getPassword().equals(map.get("password").toString().trim())) {
-            throw new RuntimeException("密码错误");
+            throw new ValidationException("密码错误");
         }
         return userInfo;
     }

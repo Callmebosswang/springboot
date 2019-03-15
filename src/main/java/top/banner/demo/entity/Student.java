@@ -18,4 +18,8 @@ import javax.persistence.*;
 @Table(name = "tb_student")
 public class Student extends UserInfo {
     private String clazz;
+
+    public Student(Integer role) {
+        super(role);
+    }
 }

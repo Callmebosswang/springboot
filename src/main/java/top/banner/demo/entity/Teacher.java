@@ -28,4 +28,9 @@ public class Teacher extends UserInfo {
     @JoinTable(name = "tb_teacher_experiment")
     private List experiments = new ArrayList<Experiment>();
 
+
+
+    public Teacher(Integer role) {
+        super(role);
+    }
 }

@@ -16,5 +16,11 @@ spring:
       test-while-idle: true
       max-active: 3
       initial-size: 1
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
 server:
   port: 1234
+

@@ -61,7 +61,7 @@ public class UserInfo {
     /**
      * 头像
      */
-    @Column(length = 50)
+    @Column(length = 200)
     private String avatarUrl;
 
     /**
@@ -76,5 +76,7 @@ public class UserInfo {
     @Column(length = 5)
     private Integer role;
 
-
+    public UserInfo(Integer role) {
+        this.role = role;
+    }
 }

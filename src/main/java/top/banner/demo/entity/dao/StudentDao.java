@@ -1,8 +1,8 @@
 package top.banner.demo.entity.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import top.banner.demo.entity.UserInfo;
+import top.banner.demo.entity.Student;
 
 
-public interface StudentDao extends JpaRepository<UserInfo, Integer> {
+public interface StudentDao extends JpaRepository<Student, Integer> {
 }

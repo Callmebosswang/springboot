@@ -7,4 +7,5 @@ import top.banner.demo.entity.ExperimentSchedule;
  * @author: XGL
  */
 public interface ExperimentScheduleDao extends JpaRepository<ExperimentSchedule, Integer> {
+    ExperimentSchedule findByStudentIdAndExperimentId(Integer studentId,Integer experimentId);
 }

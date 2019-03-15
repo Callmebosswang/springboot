@@ -71,9 +71,16 @@ public class UserController {
     /**
      * 修改密码
      */
-    @PutMapping("/userinfos/{id}/password")
+    @PutMapping("/userInfos/{id}/password")
     public UserInfo resetPassword(@PathVariable Integer id, @RequestBody Map<String, ?> map) {
         return userService.resetPassword(id, map);
+    }
+
+
+
+    @DeleteMapping("/userInfos/{id}")
+    public void deleteUsers(@PathVariable Integer id){
+        userService.delete(id);
     }
 
 }

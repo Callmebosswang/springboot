@@ -65,6 +65,7 @@ public class UserService {
         switch (type) {
             case 0:
                 userInfo = new Student(0);
+                ((Student) userInfo).setClazz(map.get("class").toString().trim());
                 break;
             case 1:
                 userInfo = new Teacher(1);
@@ -91,9 +92,9 @@ public class UserService {
      */
     @Transactional(readOnly = true)
     public UserInfo login(Map<String, Object> map) {
-        if (map.get("account").toString().trim().equals("admin")) {
-            throw new ValidationException("管理员请在后台登录");
-        }
+//        if (map.get("account").toString().trim().equals("admin")) {
+//            throw new ValidationException("管理员请在后台登录");
+//        }
         UserInfo userInfo = userInfoDao.findByAccount(map.get("account").toString().trim());
         Assert.notNull(userInfo, "用户不存在");
         if (!userInfo.getPassword().equals(map.get("password").toString().trim())) {
@@ -130,7 +131,7 @@ public class UserService {
      * @return
      */
     public UserInfo detail(Integer id) {
-        return userInfoDao.getOne(id);
+        return userInfoDao.findById(id).get();
     }
 
     /**
@@ -147,6 +148,7 @@ public class UserService {
      *
      * @return
      */
+    @Transactional(readOnly = true)
     public List<Teacher> teachers() {
         return teacherDao.findAll(Sort.by("id").descending());
     }
@@ -158,12 +160,22 @@ public class UserService {
      * @param map
      * @return
      */
+    @Transactional
     public UserInfo resetPassword(Integer id, Map<String, ?> map) {
         UserInfo userInfo = userInfoDao.getOne(id);
         if (map.containsKey("password")) {
             userInfo.setPassword(map.get("password").toString());
         }
         return userInfo;
+    }
+
+    /**
+     * 删除
+     * @param id
+     */
+    @Transactional
+    public void delete(Integer id) {
+        userInfoDao.deleteById(id);
     }
 }
 

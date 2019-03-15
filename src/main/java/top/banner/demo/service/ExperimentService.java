@@ -8,11 +8,11 @@ import top.banner.demo.entity.Experiment;
 import top.banner.demo.entity.ExperimentSchedule;
 import top.banner.demo.entity.Student;
 import top.banner.demo.entity.dao.ExperimentDao;
+import top.banner.demo.entity.dao.ExperimentScheduleDao;
 import top.banner.demo.entity.dao.StudentDao;
 import top.banner.demo.entity.dao.TeacherDao;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +28,8 @@ public class ExperimentService {
     private ExperimentDao experimentDao;
     @Resource
     private StudentDao studentDao;
+    @Resource
+    private ExperimentScheduleDao experimentScheduleDao;
 
     /**
      * 发布实验
@@ -75,7 +77,8 @@ public class ExperimentService {
     @Transactional
     public Experiment addExperiment(Integer id, Integer studentId) {
         //todo 先检查是否已经加过实验
-
+        ExperimentSchedule schedules = experimentScheduleDao.findByStudentIdAndExperimentId(studentId, id);
+        Assert.isNull(schedules,"记录已经存在");
         Experiment experiment = experimentDao.findById(id).get();
         Student student = studentDao.getOne(studentId);
         ExperimentSchedule experimentSchedule = new ExperimentSchedule();

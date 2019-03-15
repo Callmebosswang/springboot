@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.annotation.Resource;
 import java.util.Locale;
+import java.util.NoSuchElementException;
 
 /**
  * @author: XGL
@@ -43,5 +44,11 @@ public class MyExceptionHandler {
             message = desc;
         }
         return new Result(HttpStatus.BAD_REQUEST.value()+"", message);
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(NoSuchElementException.class)
+    public Result xx(NoSuchElementException e) {
+        return new Result(HttpStatus.BAD_REQUEST.value()+"", "对象不存在");
     }
 }

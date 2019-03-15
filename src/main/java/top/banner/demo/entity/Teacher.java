@@ -17,16 +17,8 @@ import java.util.List;
 @Data
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "tb_teacher")
 public class Teacher extends UserInfo {
-
-    /**
-     * 发布的实验
-     */
-    @OneToMany(targetEntity = Experiment.class)
-    @JoinTable(name = "tb_teacher_experiment")
-    private List experiments = new ArrayList<Experiment>();
 
 
 

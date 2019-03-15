@@ -11,6 +11,7 @@ import top.banner.demo.entity.UserInfo;
 import top.banner.demo.entity.dao.StudentDao;
 import top.banner.demo.entity.dao.TeacherDao;
 import top.banner.demo.entity.dao.UserInfoDao;
+import top.banner.demo.service.exception.ValidationException;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -145,6 +146,21 @@ public class UserService {
      */
     public List<Teacher> teachers() {
         return teacherDao.findAll(Sort.by("id").descending());
+    }
+
+    /**
+     * 重置密码
+     *
+     * @param id
+     * @param map
+     * @return
+     */
+    public UserInfo resetPassword(Integer id, Map<String, ?> map) {
+        UserInfo userInfo = userInfoDao.getOne(id);
+        if (map.containsKey("password")) {
+            userInfo.setPassword(map.get("password").toString());
+        }
+        return userInfo;
     }
 }
 

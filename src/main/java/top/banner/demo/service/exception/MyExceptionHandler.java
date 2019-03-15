@@ -1,4 +1,4 @@
-package top.banner.demo.service;
+package top.banner.demo.service.exception;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;

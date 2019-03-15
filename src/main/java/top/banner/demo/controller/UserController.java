@@ -19,7 +19,7 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 注册
+     * 注册，添加用户
      */
     @PostMapping("/register")
     public UserInfo register(@RequestBody Map<String, Object> map) {
@@ -60,10 +60,20 @@ public class UserController {
 
 
     /**
-     * 获取学生列表
+     * 获取老师列表
      */
     @GetMapping("/teachers")
     public List<Teacher> teachers() {
         return userService.teachers();
     }
+
+
+    /**
+     * 修改密码
+     */
+    @PutMapping("/userinfos/{id}/password")
+    public UserInfo resetPassword(@PathVariable Integer id, @RequestBody Map<String, ?> map) {
+        return userService.resetPassword(id, map);
+    }
+
 }

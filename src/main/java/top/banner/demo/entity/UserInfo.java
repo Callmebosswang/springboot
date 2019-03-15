@@ -1,6 +1,7 @@
 package top.banner.demo.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "tb_user_info")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class UserInfo {
 
     @Id

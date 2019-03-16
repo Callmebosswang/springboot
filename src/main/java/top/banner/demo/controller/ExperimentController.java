@@ -3,6 +3,7 @@ package top.banner.demo.controller;
 import org.springframework.web.bind.annotation.*;
 import top.banner.demo.entity.Experiment;
 import top.banner.demo.service.ExperimentService;
+import top.banner.demo.service.exception.Result;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -42,5 +43,15 @@ public class ExperimentController {
     @PostMapping("/experiments/{id}/{studentId}")
     public Experiment addExperiment(@PathVariable Integer id, @PathVariable Integer studentId) {
         return experimentService.addExperiment(id, studentId);
+    }
+
+    /**
+     * 删除实验
+     *
+     * @param id
+     */
+    @DeleteMapping("/experiments/{id}")
+    public Result deleteExperiments(@PathVariable Integer id) {
+        return experimentService.deleteExperiments(id);
     }
 }

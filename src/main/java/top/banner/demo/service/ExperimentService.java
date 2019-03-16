@@ -11,6 +11,7 @@ import top.banner.demo.entity.dao.ExperimentDao;
 import top.banner.demo.entity.dao.ExperimentScheduleDao;
 import top.banner.demo.entity.dao.StudentDao;
 import top.banner.demo.entity.dao.TeacherDao;
+import top.banner.demo.service.exception.Result;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -78,7 +79,7 @@ public class ExperimentService {
     public Experiment addExperiment(Integer id, Integer studentId) {
         //todo 先检查是否已经加过实验
         ExperimentSchedule schedules = experimentScheduleDao.findByStudentIdAndExperimentId(studentId, id);
-        Assert.isNull(schedules,"记录已经存在");
+        Assert.isNull(schedules, "记录已经存在");
         Experiment experiment = experimentDao.findById(id).get();
         Student student = studentDao.getOne(studentId);
         ExperimentSchedule experimentSchedule = new ExperimentSchedule();
@@ -90,6 +91,18 @@ public class ExperimentService {
         schedule.put(student, experimentSchedule);
         return experimentDao.save(experiment);
     }
+
+    /**
+     * 删除实验
+     *
+     * @param id
+     */
+    @Transactional
+    public Result deleteExperiments(Integer id) {
+        experimentDao.deleteById(id);
+        return new Result("200", "删除成功");
+    }
+
 }
 
 

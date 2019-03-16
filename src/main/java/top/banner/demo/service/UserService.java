@@ -115,12 +115,15 @@ public class UserService {
         UserInfo userInfo = userInfoDao.getOne(id);
         if (map.containsKey("age"))
             userInfo.setAge(Integer.valueOf(map.get("age").toString()));
-        if (map.containsKey("nickName"))
-            userInfo.setNickName(map.get("nickName").toString());
+        if (map.containsKey("name"))
+            userInfo.setName(map.get("name").toString());
         if (map.containsKey("sex"))
             userInfo.setSex(Sex.values()[Integer.valueOf(map.get("sex").toString())]);
         if (map.containsKey("tel"))
             userInfo.setTel(map.get("tel").toString());
+        if (map.containsKey("password")) {
+            userInfo.setPassword(map.get("password").toString());
+        }
         return userInfoDao.save(userInfo);
     }
 
@@ -171,6 +174,7 @@ public class UserService {
 
     /**
      * 删除
+     *
      * @param id
      */
     @Transactional

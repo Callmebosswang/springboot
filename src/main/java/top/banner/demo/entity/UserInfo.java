@@ -36,11 +36,11 @@ public class UserInfo {
     @Column(length = 50)
     private String account;
 
-    /**
-     * 昵称
-     */
-    @Column(length = 50)
-    private String nickName;
+//    /**
+//     * 昵称
+//     */
+//    @Column(length = 50)
+//    private String nickName;
 
     /**
      * 真实姓名
